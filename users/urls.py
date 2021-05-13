@@ -5,7 +5,7 @@ app_module = 'users'
 
 urlpatterns = [
     path('napsi',NapsiList.as_view()),
-    path('edit-user/<int:pk>', NapsiRetrieveUpdateDestroy.as_view()),
+    path('edit-napsi/<int:pk>', NapsiRetrieveUpdateDestroy.as_view()),
 
     path('professor/', ProfessorList.as_view()),
     path('edit-professor/<int:pk>', ProfessorRetrieveUpdateDestroy.as_view()),

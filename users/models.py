@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.fields import IntegerField
 
 #models.ForeignKey('users.User', on_delete = models.PROTECT)
 class Napsi(AbstractUser):
@@ -11,19 +12,20 @@ class Professor(models.Model):
     email = models.EmailField(unique=True)
     telefone = models.CharField(max_length=14)
     cpf = models.CharField(max_length=11)
-    
+
 class Aluno(models.Model):
     nome = models.CharField(max_length=40)
     email = models.EmailField(unique=True)
-    telefone = models.CharField(max_length=14)
-    matricula = models.CharField(max_length=11)
-    isMonitor = models.BooleanField(default=False)
-
+    periodo = models.IntegerField()
+    curso = models.CharField(max_length=40)
+    turno = models.CharField(max_length= 7)
+    historico = models.CharField(max_length=250)
+    
+  
 class Disciplina(models.Model):
     codigo = models.CharField(max_length=12) 
     nome = models.CharField(max_length=40) 
     professor = models.ForeignKey('users.Professor',on_delete=models.PROTECT)
-    #dia, hora
 
 class Candidato(models.Model):
     aluno = models.ForeignKey('users.Aluno', on_delete = models.PROTECT)
@@ -40,3 +42,4 @@ class Monitoria(models.Model):
     disciplina = models.ForeignKey('users.Aluno', on_delete = models.PROTECT)
 
 '''
+
